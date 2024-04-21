@@ -1,0 +1,21 @@
+{
+  "name": "batterywarrior",
+  "version": "0.0.1",
+  "description": "batteryWarrior is a cross-platform application which helps to drastically enhance your battery performance and life",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "dev:watch": "npx electronmon --trace-warnings ."
+  },
+  "keywords": [
+    "electron",
+    "reactjs",
+    "typescript"
+  ],
+  "author": "Priyanshu Rana",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^30.0.1"
+  }
+}

@@ -1,6 +1,6 @@
 const { contextBridge, ipcRenderer } = require("electron");
 
-contextBridge.exposeInMainWorld("BatteryStatus", {
+contextBridge.exposeInMainWorld("BatteryNSystemInfo", {
   // status: () =>
   //   ipcRenderer.invoke("status").then((result) => {
   //     return result;

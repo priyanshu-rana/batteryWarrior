@@ -6,19 +6,63 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "dev:watch": "npx electronmon --trace-warnings ."
+    "dev:watch": "npx electronmon --trace-warnings .",
+    "build": "electron-builder"
   },
   "keywords": [
     "electron",
     "reactjs",
     "typescript"
   ],
-  "author": "Priyanshu Rana",
+  "author": {
+    "name": "Priyanshu Rana",
+    "email": "priyanshurana1234@gmail.com"
+  },
   "license": "MIT",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "electron-builder": "^25.1.8",
     "electron": "^30.0.1"
   },
-  "devDependencies": {
-    "electron-builder": "^25.1.8"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/priyanshu-rana/batteryWarrior"
+  },
+  "build": {
+    "appId": "io.github.priyanshu-rana.batterywarrior",
+    "productName": "BatteryWarrior",
+    "files": [
+      "main.js",
+      "battery.js",
+      "index.html",
+      "styles.css",
+      "preload.js",
+      "app.js",
+      "assets/**",
+      "build"
+    ],
+    "directories": {
+      "buildResources": "build"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Utility"
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.utilities"
+    }
   }
 }

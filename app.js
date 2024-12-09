@@ -93,14 +93,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     btnBatteryInfo.addEventListener("click", () => toggleView("battery"));
     btnDeviceInfo.addEventListener("click", () => toggleView("device"));
-    toggleView("battery"); // Default view
 
     renderbatteryHTML(batteryInfo);
     renderDeviceHTML(deviceInfo);
   };
 
   fetchBatteryNSystemInfo();
-  setInterval(fetchBatteryNSystemInfo, 20000);
+  setInterval(fetchBatteryNSystemInfo, 5000);
 });
 
 const transformBatteryStatusJSONForWindows = (status) => {

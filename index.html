@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battery Warrior</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div>
+        <button id="btn-battery-info" style="background-color: #d3d3d3">
+          Battery Info
+        </button>
+        <button id="btn-device-info">Device Info</button>
+      </div>
+      <div id="info-container">
+        <!-- Battery and Device information will be dynamically inserted here -->
+        <!-- Default view is Battery Info -->
+        <div id="battery-info" style="display: block"></div>
+        <div id="device-info" style="display: none"></div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

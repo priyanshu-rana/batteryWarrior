@@ -3,6 +3,7 @@ const url = require("url");
 const path = require("path");
 const exec = require("child_process").exec;
 const os = require("os");
+const http = require("http");
 const { getBatteryStatus, getDeviceInfo } = require("./battery");
 
 // let mainWindow;
@@ -53,34 +54,28 @@ function createMainWindow() {
     },
   });
 
-  // mainWindow.webContents.openDevTools();
+  const startUrl = "http://localhost:3000";
+  const indexPath = path.resolve(
+    app.getAppPath(),
+    "app-bw",
+    "build",
+    "index.html"
+  );
 
-  // const startUrl = url.format({
-  //   pathname: path.join(__dirname, "./app/build/index.html"),
-  //   protocol: "file",
-  // });
-  // const startUrl = "http://localhost:3000";
-  // mainWindow.loadURL(startUrl);
-
-  mainWindow.loadFile(path.join(__dirname, "index.html"));
+  http
+    .get(startUrl, (res) => {
+      console.log("Dev server is running on:", startUrl);
+      mainWindow.loadURL(startUrl);
+    })
+    .on("error", (err) => {
+      console.log("Dev server is not running. Loading local build:", indexPath);
+      mainWindow.loadFile(indexPath);
+    });
 }
 
 app.whenReady().then(() => {
   ipcMain.handle("status", fetchSystemInfo);
   createMainWindow();
-
-  // Electron Specific **Imp
-  // createMainWindow();
-  // const checkBatteryStatus = async () => {
-  //   try {
-  //     const status = await bateryStatus();
-  //     mainWindow.webContents.send("battery-status-update", status);
-  //   } catch (error) {
-  //     console.error("Failed to get battery status:", error);
-  //   }
-  // };
-  // checkBatteryStatus(); // Initial check
-  // setInterval(checkBatteryStatus, 5000); // Check every 5 seconds
 
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
